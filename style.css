@@ -2,10 +2,13 @@
 *{
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;/* remove your horizontal sliding bar*/
 }
 
 body {
   background-color: ghostwhite;
+  box-sizing: border-box;/* remove your horizontal sliding bar*/
+  overflow-x: hidden; /* remove your horizontal sliding bar*/
 }
 
 @media only screen and (min-width: 750px) {
@@ -31,6 +34,7 @@ body {
   }
 
   .logo img {
+    mix-blend-mode: multiply; /*add this for doing correct background of logo*/
     height: 3em;
     width: 5em;
     border-radius: 1em;
@@ -147,6 +151,7 @@ body {
       /* Display ControlPanel when active class is added */
       .ControlPanel.active {
         display: block;
+        position: fixed;
       }
 
       /* Other Control Panel styling */

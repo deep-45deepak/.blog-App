@@ -1,341 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>.blog</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="website icon" type="png" href="./Images/.blog.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href=""class="space"" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="phone.css" />
-  </head>
-  <body>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class=" bg-gray-100 font-[Baloo] bg-ghostwhite m-0 p-0">
     <!-- Navbar starts here -->
-    <nav>
-      <div class="navbar">
-        <div class="left">
-          <div class="logo">
-            <img id="themeImage" src="./Images/logo.png" alt="logo" srcset="" />
-          </div>
-          <div id="break"></div>
-          <div class="heading">
-            <button
-              style="background-color: #04aa6d; color: white"
-              class="rBtn"
-            >
-              Home
-            </button>
-            <button id="blogs" class="rBtn">
-              Blogs
-              <i
-                class="fa fa-caret-down"
-                style="font-size: 15px; display: inline"
-              ></i>
-            </button>
-            <button id="add" class="rBtn">
-              Add
-              <i
-                class="fa fa-caret-down"
-                style="font-size: 15px; display: inline"
-              ></i>
-            </button>
-            <button class="rBtn">
-              Contact us
-              <i
-                class="fa fa-caret-down"
-                style="font-size: 15px; display: inline"
-              ></i>
-            </button>
-            <button class="rBtn" class="btn1">About us</button>
-            <div>
-              <div class="Search">
-                <input
-                  id="S2"
-                  type="search"
-                  placeholder="Search..."
-                  name="Search"
-                />
-                <button id="S1" class="btn1">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </div>
-            </div>
-          </div>
+    <nav class="bg-ghostwhite py-2 px-10 md:flex md:items-center md:justify-around">
+        <div class="flex justify-between items-center">
+            <img id="themeImage" src="./Images/logo.png" alt="logo" class="h-12 w-20 rounded-lg" />
+            <span class="text-2xl cursor-pointer md:hidden block"><i class="fas fa-bars"
+                    onclick="openControlPanel()"></i></span>
         </div>
-        <div id="break"></div>
-        <div class="right">
-          <!-- Night Mode -->
-          <i id="darkMode" class="fa-solid fa-circle-half-stroke"></i>
-          <button id="login">Log In</button>
-          <i onclick="openControlPanel()" class="fa-solid fa-bars"></i>
-        </div>
-      </div>
+        <ul
+            class="md:flex md:items-center md:justify-around z-[-1] md:z-auto md:static absolute bg-ghostwhite w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 transition-all ease-in duration-500 hidden md:block">
+            <li><button style="background-color: #04AA6D;"
+                    class="text-white px-4 py-1.5 rounded-full md:ml-4">Home</button></li>
+            <li><button id="blogs"
+                    class="bg-ghostwhite text-black px-4 py-1.5 rounded-full md:ml-4 hover:bg-green-500 hover:text-white">Blogs
+                    <i class="fa fa-caret-down ml-1"></i></button></li>
+            <li><button id="add"
+                    class="bg-ghostwhite text-black px-4 py-1.5 rounded-full md:ml-4 hover:bg-green-500 hover:text-white">Add
+                    <i class="fa fa-caret-down ml-1"></i></button></li>
+            <li><button
+                    class="bg-ghostwhite text-black px-4 py-1.5 rounded-full md:ml-4 hover:bg-green-500 hover:text-white">Contact
+                    us <i class="fa fa-caret-down ml-1"></i></button></li>
+            <li><button
+                    class="bg-ghostwhite text-black px-4 py-1.5 rounded-full md:ml-4 hover:bg-green-500 hover:text-white">About
+                    us</button></li>
+            <li class="relative md:ml-4 mt-4 md:mt-0">
+                <div class="relative border border-gray-500 rounded-lg px-2 py-1 m-2 rounded-full">
+                    <input id="S2" type="search" placeholder="Search..."
+                        class="bg-gray-100 text-black rounded-full border-none focus:outline-none" />
+                    <button id="S1" class="absolute right-1 top-1 text-gray-500 pr-3">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </li>
+            <li class="md:ml-4 mt-4 md:mt-0"><i id="darkMode" class="fa-solid fa-circle-half-stroke cursor-pointer"></i>
+            </li>
+            <li class="md:ml-4 mt-4 md:mt-0"><button id="login"
+                    class="bg-green-500 text-white px-4 py-1.5 rounded-full ml-10">Log In</button></li>
+        </ul>
     </nav>
 
     <!-- Control Panel (Sidebar) -->
-    <div class="ControlPanel" id="controlPanel">
-      <div class="content">
-        <div onclick="closeControlPanel()" class="menu">
-          <i
-            onclick="closeControlPanel()"
-            style="color: white"
-            class="fa-duotone fa-solid fa-arrow-right-from-bracket"
-          ></i>
-          <button
-            style="border: none"
-            type="button"
-            onclick="closeControlPanel()"
-          >
-            Close
-          </button>
+    <div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden" id="controlPanel">
+        <div class="bg-white rounded p-8 text-center dark-mode">
+            <div class="flex justify-end mb-4">
+                <i onclick="closeControlPanel()"
+                    class="fa-duotone fa-solid fa-arrow-right-from-bracket cursor-pointer text-white"></i>
+                <button onclick="closeControlPanel()"
+                    class="ml-2 border-none bg-transparent cursor-pointer">Close</button>
+            </div>
+            <h3 class="text-lg font-semibold mb-4">Profile</h3>
+            <img id="profile"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&s"
+                alt="Profile Picture" class="w-8 h-8 rounded-full mx-auto mb-4" />
+            <h3 class="text-lg font-semibold mb-4">Shortcuts</h3>
+            <div class="space-y-2">
+                <div class="flex items-center bg-green-600 text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <button class="ml-2 border-none bg-transparent cursor-pointer">Search</button>
+                </div>
+                <div class="flex items-center bg-green-600 text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-house"></i>
+                    <button class="ml-2 border-none bg-transparent cursor-pointer">Home</button>
+                </div>
+                <div class="flex items-center bg-green-600 text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-house"></i>
+                    <button id="blogsTask" class="ml-2 border-none bg-transparent cursor-pointer">Blogs</button>
+                </div>
+                <div class="flex items-center bg-green-600 text-white p-2 rounded-lg">
+                    <i class="fa-regular fa-square-plus"></i>
+                    <button id="addTask" class="ml-2 border-none bg-transparent cursor-pointer">Add</button>
+                </div>
+                <div class="flex items-center bg-green-600 text-white p-2 rounded-lg">
+                    <i class="fa-solid fa-message"></i>
+                    <button class="ml-2 border-none bg-transparent cursor-pointer">Inbox</button>
+                </div>
+            </div>
         </div>
-        <h3>Profile</h3>
-        <img
-          id="profile"
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIf4R5qPKHPNMyAqV-FjS_OTBB8pfUV29Phg&s"
-          alt="Profile Picture"
-        />
-      </div>
-      <div class="Shortcut">
-        <h3>Shortcuts</h3>
-        <div class="menu">
-          <i style="color: white" class="fa-solid fa-magnifying-glass"></i>
-          <button style="border: none" type="menu">Search</button>
-        </div>
-        <div class="menu">
-          <i style="color: white" class="fa-solid fa-house"></i>
-          <button style="border: none" type="menu">Home</button>
-        </div>
-        <div class="menu">
-          <i style="color: white" class="fa-solid fa-house"></i>
-          <button id="blogsTask" style="border: none" type="menu">Blogs</button>
-        </div>
-        <div class="menu">
-          <i style="color: white" class="fa-regular fa-square-plus"></i>
-          <button id="addTask" style="border: none" type="menu">Add</button>
-        </div>
-        <div class="menu" id="inbox">
-          <i style="color: white" class="fa-solid fa-message"></i>
-          <button style="border: none" type="menu">Inbox</button>
-        </div>
-      </div>
     </div>
 
     <!-- Main section starts here -->
-    <main class="main">
-      <!-- first main -->
-      <div class="first">
-        <div class="text">
-          <h1>
-            Create a blog <br />
-            worth Sharing.
-          </h1>
-          <p id="glow">
-            Before the digital age, only the privileged few could consolidate
-            the resources necessary to start their own business Starting capital
-            had to be significant, while outside funding was often scarce unless
-            you had connections with financial and entrepreneurial know how.
-          </p>
-          <button>
-            <a style="text-decoration: none" href="https://substack.com/"
-              >Start Reading</a
-            >
-          </button>
-          <p id="glow">
-            In the world of online sales and ecommerce, that is simply no longer
-            the case as the demand for ecommerce and online businesses has
-            exploded.
-          </p>
+    <main class="p-4 pt-0">
+        <!-- first main -->
+        <div style="background-color: #04AA6D;"
+            class="flex flex-col items-center justify-between space-y-4 md:space-y-0  p-4 rounded-lg text-center">
+            <div class="md:w-1/2 space-y-4">
+                <h1 class="text-4xl font-sans font-bold text-white">Create a blog <br /> worth Sharing.</h1>
+                <p class="text-white text-lg font-sans">Before the digital age, only the privileged few could
+                    consolidate the
+                    resources necessary to start their own business. Starting capital had to be significant, while
+                    outside funding was often scarce unless you had connections with financial and entrepreneurial
+                    know-how.</p>
+                <button
+                    class="bg-white text-green-600 px-4 py-1.5 font-awesome rounded-lg hover:border-2 hover:border-white">
+                    <a href="https://substack.com/" class="no-underline text-green-600">Start Reading</a>
+                </button>
+                <p class="text-white text-lg">In the world of online sales and e-commerce, that is simply no longer the
+                    case as the demand for e-commerce and online businesses has exploded.</p>
+            </div>
+            <div class="md:w-3/4">
+                <img class="rounded-lg mb-4 m-2t"
+                    src="https://www.blogtyrant.com/wp-content/uploads/2021/06/spi-site.png" alt="" />
+            </div>
         </div>
-        <div>
-          <img
-            style="border-radius: 2em; margin-bottom: 1em"
-            src="https://www.blogtyrant.com/wp-content/uploads/2021/06/spi-site.png"
-            alt=""
-          />
-        </div>
-      </div>
-      <!-- Second section starts from here.. -->
-      <div class="second">
-        <div class="secondTop">
-          <h1 id="typing-heading" style="font-size: medium">
-            A beautiful website starts here
-          </h1>
-          <h3>
-            Weebly's powerful drag and drop website builder and guided set up
-            get you to the finish line faster, no coding needed.
-          </h3>
-          <a href="#">FEATURE</a>
-          <a href="#">PERSONAL BLOGS</a>
-          <a href="#">BUSINESS BLOGS</a>
-          <a href="#">HEALTH BLOGS</a>
-          <a href="#">EVENT BLOGS</a>
-          <a href="#">FOOD BLOGS</a>
+        <!-- Second section starts from here.. -->
+        <div class="mt-8 text-center">
+            <h1 id="typing-heading" class="text-4xl font-bold text-green-600">A beautiful website starts here</h1>
+            <h3 class="text-lg text-green-600">Weebly's powerful drag and drop website builder and guided set up get you
+                to the finish line faster, no coding needed.</h3>
+            <div class="flex flex-wrap justify-center space-x-4 m-4">
+                <a href="#" class="text-white bg-gray-500 px-2 py-2 rounded-lg text-sm hover:bg-gray-400">FEATURE</a>
+                <a href="#" class="text-white bg-gray-500 px-2 py-2  rounded-lg text-sm hover:bg-gray-400">PERSONAL
+                    BLOGS</a>
+                <a href="#" class="text-white bg-gray-500 px-2 py-2  rounded-lg text-sm hover:bg-gray-400">BUSINESS
+                    BLOGS</a>
+                <a href="#" class="text-white bg-gray-500 px-2 py-2  rounded-lg text-sm hover:bg-gray-400">HEALTH
+                    BLOGS</a>
+                <a href="#" class="text-white bg-gray-500 px-2 py-2  rounded-lg text-sm hover:bg-gray-400">EVENT
+                    BLOGS</a>
+                <a href="#" class="text-white bg-gray-500 px-2 py-2  rounded-lg text-sm hover:bg-gray-400">FOOD
+                    BLOGS</a>
+            </div>
         </div>
 
-        <div class="secAnimation">
-          <div class="carousel-container">
-            <div class="carousel-track">
-              <div class="fbox">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOyj0X6r1LTNkwS_Y-JH5gJNPwJ7eUPBVW3A&s"
-                  alt="Sample 1"
-                />
-              </div>
-              <div class="fbox">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOycmVbRZVZCQ4c4KcR5aFcWr6JNrz6rF9DQ&s"
-                  alt="Sample 2"
-                />
-              </div>
-              <div class="fbox">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVU0qtDhH6-4pdrgzugEJcv50oe90Mb7-Q1Q&s"
-                  alt="Sample 3"
-                />
-              </div>
-              <div class="fbox">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7ei_kx3VvFRaAobJI7sStOGYZT690V4qN_w&s"
-                  alt="Sample 4"
-                />
-              </div>
-              <div class="fbox">
-                <img
-                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATAAAACmCAMAAABqbSMrAAABKVBMVEUfIilg2/pi4f8aFh1Dd4oeIydk4/9h3/4jIClg4P0dGyJbyeUeHSFTsc8dBQNh2vsbFRkdCg4aCgw0WV4ZBg1Yt9NIfpYYAAAsTVhOp79h0/MeHSRk5f8WAAAcISwgISkoKjUgKiseFBxMoLQ3YG8hAAAOAABFiJsmLzczWmdn1/sbFhshIC0cAAgYABBh0+8bDRcrPkoaJSodIB8wR1ZUxNc/dH8bFBQiFBQ9Ym9Qla1EjpcdDh8XBRQ+bn4eABckAAs6TFgiFTBe7P9KlKMYEgZQpbI8ZnpEp7cnRVRew+JNi6Y5eHwvOUI5a3MgP0E0TmQxR00iHTBTnbtoutsqMkZMqLQYABceLjMdGQ0/codZzN88gJAuTlFUusw9WWsiIzteqcwZIRkHq87hAAAN8UlEQVR4nO2ba3/aOhKHbRNL+JIIiA0xFnZiSAAbYyAXGkpJdktKS7Y9p83pbjdhw+75/h9iZVnmkkvfpeS3q+dFC7ZspL9Ho5mRIwgcDofD4XA4HA6Hw+FwOBwOh8PhcDgcDofD4XA4HA6Hw+FwOBwOh8PhcDgcDofD4XA4HA6Hw+FwOBwOh/M/RWCERmbtiGqEYc7eUHdeOU42mJmn1lmrn3XpAVd+Uzivnp4OGn9uuGuvE13WsAQx9t8OVXpAfjcqYyxhHJ2oD9qqD7D/H43wwpK0Wne3CsHd3qXcc/INEwPr/POeibWLtZatxu4D/tLNlC48V95Q1zeC7cDorxlbzQ0/YPy2nQ1r/vvt/YuMfXx4Cs7XTKw/w9I6AMCyNVI72U31fgNkzvD4ivyfdUu1Mv5QqUt41haIN2sdT/C4s9Z0CyhriAj5CAI07nnOy/dUdlz24eV/6yd0xrjG7Cj3OcKnSGkWkq92Q9o2VptmtiTxSWB5nn/5nsqto1IlZshWp81gfASfUtetO2UfngwFNsMy/nRNh+cE80VRmngv3lP1RIwo1f4vsOdnMT6AbipYOIMSrJbSUwHSCqtNn7UwgnJy/NI91fdwYs9WfpOTslPFJ0ww7wuWJtH761Qx+TnBSBBCIT5/MSu18KV7qu+B1yBY7vr9VobOwX4Xgb/tfEJglMhkd8HTPgyabw4IvcbnSVVkkil4K3hhz/JKBMuM8PWbFpEnyGlgXMlXvkCxm9OJ0akT8HCVZIJthy7B1m01/E1LFFOg2X7hxOCVCGZ3sVl6VxFOah8lcXBjVQd3cFr7vWG8O6wTq1ltmgqmbNPpJ8uyIHt25CvxQSQdLBrKB0KQL7Tb7bDdCWT3UZRmex16st3xdOHRaVkOOqFhvGsX8jk3jSR6gZ75yp6XdajrurqplTI48qPr+0iRJKj4gIAhEgFA/h+DKegaq7nPUrCVmerdJq5YBLuLKNftqLWqGYmobFbPW/2HP5lX54NtTYui6fa4Ocw9OGuHjS1rWi5HmjmYCMyJfmvU5s3UwO9/b87nzV+/UspyTw/doulDiIGoQXgzrs8I9QGCZZ9kkz40rz8buuOwGfCkYEIOMS+2xYbu9PVxJCFid+QMlMRq1ustzMFt5f46KJPkVVEQglCSonq4EpG4ztWJCTEkITHyFQVH4+FxrIy6i6XFCgMhkID48nHMI7LhiUUWPABPz7tHH6BZ6Xu5IMgFh2P8x9H+bnwOg/vakfpTwSrlZCBSkZnSTg2B1YgD+LXLxXRtXX1R4OpZEZf33ix8knsxwGj1LIxqV0Qx+19rtySUf7lgTt+xAFbuR1+xVsrvItg4Jo5c1XuOXLjD9cuKhUdzC2Fsdoc9av9PC1aaMrefCOYYdSj6q4P2EZ4VknwmK7Rn1PaWEDsTm32BmqCTPZ7CNb3I1fC2I2RfgWBOf7cM0OB7mDE0vHs0xXVDaBnd80+XspCpAaUl+IrstbN1BMDZYe95wY7KzJCSKZnfwuJDFOm2kxhR5/w9enQa+t8Tx58t/PE4NEag5r0GC8vsQXD/48p2excz8PcJ1jqCLWwT53DXVeXDbTA4w1Zblu1OUMVw1nlWMLvLZhiY6+SrupcGtwBFkSgl8ijKV50qciAmB0hGUY5g6pUUky67vUMrkUUh5wlMWl88yOq7mHi8VEIIiZf91YLlIpIE0TXQbqCojL+8cf5hKqSPyO/pelcSNdBMlr3KTJJo9vSkYKVxMg4k0bXhHxrTq3z2wxu2RnfJFEPTOH1wgzpTxN9qXP2zMWKzWZS+kkhQUOfMOH1g3jZ3t+7Ts9WC3rWsj9tMQe3Gsqxx69fqFWxhzWC/GX6EaBrK/QlGiPgUMM4fXFSRpO2wtpUbXM1lnxTMKU2YIiK5AwkyRgDF36HW6JDYVn+TM+moFTyP1Q/vmJrf2zJZOb0hC3slasLhKVMEjiqB+s07nKURi+tm83ljEYdV2nmj82hIL0vBwrNOL/lMHASYB0J/rLAJUhDsAwnOhqytuoenR8JqalTJx7TDSmOcOh3pS7yNcnHqxw18tK8zRfUouWY7jqic90nZccQikGA3Ecy3yJxUf2e2Cs/YAykNFCohnMXzb7ORfmeA6wUWHfVHEM1yQp7NF5L5COpfgDJIH2JQg2ahtxQMRYNqzEdrCrHP/Mppm7S0fySOB9UXY3pTZxf9SX5tv055u5hObmJT6D4U3H41+eKfpnm8O4zo7ZEVK7hZwdQmKO97LrWxcKqI0VD29oAfL/P4NnBDk0RLrN/H7SmoxyaxrFZAlJAEp/E/kJZ3MmyJBF3BSWgJn5OLQJPYXDYXW2Y/eRI9t/XtUmE2u0PikdPk7ni0SMiMKolXiUVqmxdMuLiHWrcf25j9SdL+wPV8lgSNZFJI5oXg1XDZxGd0rzIYmlJEZ+fz9TBFGl3JdIDUo6FoGKQbS5lMYoPSal6qB55XMIxC5SiJ2GLBXJfdDP1Y5AX2yRblLHaAGxbsT0cDYvGyL7TaYzzegyRudXZupyi6/qcstDW8VQP3O04rKNVImvOJruHPCoaiWmKNhskEjMpLWCCRzPCsrHuGM996S/J8k+STaGFhaXwCtcJCsJ7tETJ9WpzcsGCO17qXcLn4rWJE0m+hha0d1+kY747eEAdXxFE7V5a+7/RHJgan3f5apP8Q/4PQT9aPUvkZEyTDvKHl7uxhdzCFAEhoGVclgqnzdEkxntZjw4IdC8c7oymWlI91fH/Y/zeSzr3jA5l0Rdb3IZxfkYxy8CGSpHKxrSfp98LpK3FVA6QDJqN1WolRhBF6HMizVla8TOo9S3qiCRWstlhzXqVgMbn+hFgZFCOrvjtQtDC8aBvti8vSPbD+VbzRSEgmaTN1EVIvBDud1wjze2ZweC9tEkbPGhgZJgnTuuX1zHupOfGbi/LkqxXMzR6XfmxFSMIYKz7UpmbMVFNIvoyxhHD9a+gtI+pFHGaVYnfusfWPBAWVJHkWSqlg2mOqJLrrRSzxhpgsfjCKtKUPazWfFCwbF3dpqvkKBIuxK9L0t62BWY4ztFg5QGIE0Tersz0L7z1TcaWBpVOxkrjSx7VkV4AEKLQUoUyPCo/IxTtUSRCCpO3b5veG63WOVgT7mjr9yvInXVumxJ9fiWDqLt4u9Y2Lo34Ro3ltUtstA+uqcpEfFq5x8WeCkXUtsZc4LUrqn4ZFHZQyNbIPiU0wKyYhBtqteBn7W0uQ3y0FEwRmfSi7KPO6Bwf7lPjqVyJYcIvrdMF3KxY2K3qpCqZD2mO1iatPbrMtcskdK41kR1f0QC4J65G0v1Labg3j2KDvHOsTlnrfLEL546Vg8gXL20FtsZvSGbyn+3nluNT2SgTLDfBEpxPKVjXJOpphv5v4cPuzZD65zbYQzP6ROu0okcBOijsK2lpW6jOTMxp8do+9WXK9dJsuEiTfWAjmGjesErm9mJNHGjtNV9jXIZix2MiV9QaGFsa7bDiugLS1kOiRYM7VDUySPal4SVsWkkgURdnj5Eo518U0CHk/Xwo2Y1mqXDHhckqq86Q67UsTlvZ3ztlput1ns2qFaB72XlqVn2BYy1cFgq4C4WQxDVWkdX4qmJv9zgowKHJoeaJTZ9v5Uy95B7SzzwKJqCPot8xEpgVaaQuMm3RKUx9msDVTQc2Katvqzu+s3CjRN/sWgqFmKQhym9pmIxb2SU9+3LmqRVCcVRy2U2iL059bGPFibBohhabnwnErShy7op0PS6XQ2Sqz9HrQcfVuYkIKNLsXYb4/mQLkrwjmjeKCHNELIau235hbkH4VUfIagttIVwVkzYrXxxtSLFfHtwHd1HErtxhcYzDYSbpid8H9k2/vrAimf08HgVuxncrDUVp8x2h6qqX7R+gunmUdLa0QSuWp5ktQBApaCiYfmukWCIwziSQlIHlFk1qr805bbLQBID7cz/xVqDV8QyJF1+13qlicVLoRvm9cxJuWVzP8dq1w/lTF9XCQeDHFH9OpfBDegHSgyxQIwWacP3tfgJ/Ourg25CuWtiJYS9Y1phJ9VY9+RD64NpI9pc54ZUvJ38C+ZELGh7s7Xv5oEuGoeyXo+yZWZp1Cbid7J31de+n3CcHc7L/TEqKyT484V5a0to9GzW9yRcfctvBqJgmjUrQiGDHYRvnBnhOCuLp8PCvP4NfvS6Z4RSzd1AcawNWM3iKxtVFE2K9eDxR0X1prSQSjZcOk3MwoDCRWTLx5Rw84h3UE470BqiKVSzvJJ7NcbldjfZGokKEjoB0YkUivZYIJgfsfEG/EsLIk8V+gvvSjwQm7M7lkc4K1ClVJwgBany7ZkfyPKsIAA1NfbxkUMYyRzMvV66FEj0LM7FEOu5YiKZDuQCEoRcX+8t3i9kSDMH45lrSov7NLZSm5YxrK2u2aBqmJxk8m7tXqe2ded3BHuqooyuZ8mOC2Lr7OipN9408W3ciOfdg6n71tGvKDAPGkmPBl9ekOz9nR4pwJJuvh/pY1VYAEy+a42clnhcUbOiR/bI5Jfj+9uW2RmMU7q8dX1pd3dL32Xn27LJEVYbo9+xzqK32QW2onczIpXl9fF+cPnuYvxQ5ywfqfKLiq5z38qwbajrJ+Rs0x7NWWRlg6DEslo/PoNmrHKJVKhSRNzdBbBmt/uKPmCqWdwx1ysffEH07YGXrF495xOBwOh8PhcDgcDofD4XA4HA6Hw+FwOBwOh8PhcDgcDofD4XA4HA6Hw+FwOBwOh8PhcDgcDofD4XA4HA6Hw+FwOJz/Vf4LpCOdzihFawEAAAAASUVORK5CYII="
-                  alt="Sample 5"
-                />
-              </div>
-              <div class="fbox">
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYeWAXeBgRDe18itcSO-6DEzW9vgVeAMjEoA&s"
-                  alt="Sample 6"
-                />
-              </div>
+        <div class="bg-white text-gray-900 p-10">
+            <!-- Grid Container -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <!-- Card 1 -->
+                <div class="bg-blue-500 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+                    <h2 class="text-xl font-bold">Card 1</h2>
+                    <p>Small Card with Info</p>
+                </div>
+
+                <!-- Card 2 (Larger) -->
+                <div
+                    class="bg-green-500 text-white p-8 rounded-xl shadow-lg sm:col-span-2 hover:scale-105 transition-transform">
+                    <h2 class="text-2xl font-bold">Wide Card</h2>
+                    <p>This card spans two columns.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-purple-500 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+                    <h2 class="text-xl font-bold">Card 3</h2>
+                    <p>Another small card.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="bg-red-500 text-white p-6 rounded-xl shadow-lg md:col-span-2 hover:scale-105 transition-transform">
+                    <h2 class="text-xl font-bold">Big Card</h2>
+                    <p>Responsive layout.</p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-yellow-500 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+                    <h2 class="text-xl font-bold">Card 5</h2>
+                    <p>Nice color contrast.</p>
+                </div>
+
+                <!-- Card 6 (Taller) -->
+                <div
+                    class="bg-blue-400 text-white p-10 rounded-xl shadow-lg sm:row-span-2 hover:scale-105 transition-transform">
+                    <h2 class="text-2xl font-bold">Tall Card</h2>
+                    <p>This card spans two rows.</p>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="bg-gray-500 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+                    <h2 class="text-xl font-bold">Card 7</h2>
+                    <p>Interactive hover effects.</p>
+                </div>
+
+                <!-- Card 8 -->
+                <div class="bg-green-900 text-white p-6 rounded-xl shadow-lg hover:scale-105 transition-transform">
+                    <h2 class="text-xl font-bold">Card 8</h2>
+                    <p>Neatly arranged grid.</p>
+                </div>
+
             </div>
-          </div>
         </div>
 
-        <div class="secondEnd">
-          <button class="SecBtn" id="blogsSec">See More</button>
-        </div>
-      </div>
+        <div class="container mx-auto p-6 max-w-4xl">
+            <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-8">📖 My Blog</h1>
 
-      <!-- third section starts from here. -->
-      <div class="third">
-        <div class="thirdContent">
-          <h1>How to Add a Blog on Website</h1>
-          <p>
-            Content is king—add a blog to your website and learn exactly how
-            SEO‑centric content can drive real results for your business.
-          </p>
-        </div>
-      </div>
-                <div class="grid">
-            <div class="box1 box">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKbQ0E8l6BAbTjsShpOCjRUqkGR4ga24Pgn-BP-0Dn9k2EvzrzbOOIzkuwjrvYjYTmS3s&usqp=CAU"
-                alt="sample image."
-              />
-            </div>
-            <div class="box2 box">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjFhXiN3N_DKgismwrmFtb99CC3C8eX5xAjg&s"
-                alt="blog ideas"
-              />
-            </div>
-            <div class="box3 box">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjno2FnNIRUF9F4TcPBBOHb1T8ud7YuqiWXQ&s"
-                alt="image"
-              />
-            </div>
-            <div class="box4 box">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqlS-Z3Juvbq-0AOT9iVoJ1lDPiA6533V-hwNS-NIaGc8KWUY80bUcnGYt5cd4yZk6XAI&usqp=CAU"
-                alt="image"
-              />
-            </div>
-            <div class="box5 box">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhlMADoUS3VM5TmvX1euH7LGiI8rwLVHiHqQ&s"
-                alt="image"
-              />
-            </div>
-            <div class="box6 box">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYeWAXeBgRDe18itcSO-6DEzW9vgVeAMjEoA&s"
-                alt="image"
-              />
-            </div>
-          </div>
-          <div class="forth">
-          <img style="max-width: 80vw"  src="https://prod.ucwe.capgemini.com/be-en/wp-content/uploads/sites/14/2023/07/Sustainable-Solutions-blog-picture.jpg?w=960" alt="" />
-      </div>
-    </main>
+            <!-- Blog Form -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-semibold mb-4 text-gray-700">Create a New Blog Post</h2>
 
-    <!-- Footer starts from here -->
+                <input id="title" type="text" placeholder="Enter Blog Title"
+                    class="w-full p-3 mb-3 border rounded-lg focus:ring-2 focus:ring-blue-400">
 
-    <footer class="last">
-      <button id="goto">Go to Top</button>
-      <div class="footInfo">
-        <div class="fBox">
-          <h1>.blog</h1>
-          <li>
-            <span class="space">dpk.41deep@gmail.com</span>
-          </li>
-          <li>
-            <span class="space">dpk.45deepak</span>
-          </li>
-          <div class="icons">
-            <div>
-              <i style="color: white" class="fa-brands fa-google fa-xl"></i>
-              <i style="color: white" class="fa-brands fa-instagram fa-xl"></i>
-              <i style="color: white" class="fa-brands fa-facebook fa-xl"></i>
-              <i style="color: white" class="fa-brands fa-linkedin fa-xl"></i>
-              <i style="color: white" class="fa-brands fa-twitter fa-xl"></i>
+                <textarea id="content" rows="4" placeholder="Write your blog..."
+                    class="w-full p-3 mb-3 border rounded-lg focus:ring-2 focus:ring-blue-400"></textarea>
+
+                <input id="image" type="file" accept="image/*"
+                    class="w-full mb-3 border p-2 rounded-lg bg-gray-50 cursor-pointer">
+
+                <button onclick="addBlog()"
+                    class="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition duration-300">
+                    ➕ Add Blog
+                </button>
             </div>
-          </div>
-        </div>
-        <div class="sBox">
-          <h2>Get our services</h2>
-          <input
-            type="email"
-            placeholder="Enter your Email"
-            id="Email"
-            style="display: block"
-          />
-          <input type="checkbox" name="checkbox" id="checkbox" />
-          <span class="span"
-            >By checking the box, you agree that you are at least 16 years of
-            age.</span
-          >
-          <button type="submit" style="display: block; margin: 0.41em">
-            Subscribe
-          </button>
-        </div>
-        <div class="line"></div>
-      </div>
-      <p style="padding: 1em; display: inline-block; font-size: small">
-        Website Terms | Privacy Policy | Accessibility Statement | CA
-        Transparency in supply chains Act | Supplier Code of Conduct | Marketing
-        to Children | Do not Sell my Information
-      </p>
-    </footer>
 
-    <script src="script.js"></script>
-  </body>
+            <!-- Blog List -->
+            <div id="blogList" class="mt-6 space-y-6">
+                <!-- Blogs will be added here dynamically -->
+            </div>
+        </div>
+
+
+        <!-- Footer starts from here -->
+        <footer class="bg-green-700 w-screen">
+            <div class="bg-green-700 text-white p-6 py-4 text-center">
+
+                <button id="goto" class="bg-white text-green-600 px-4 py-2 rounded mb-4 md:mb-0">Go to Top</button>
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center">
+                    <h1 class="text-4xl">.blog</h1>
+                    <ul class="space-y-2">
+                        <li>dpk.41deep@gmail.com</li>
+                        <li>dpk.45deepak</li>
+                    </ul>
+                    <div class="flex justify-center space-x-4 mt-4">
+                        <i class="fa-brands fa-google fa-xl"></i>
+                        <i class="fa-brands fa-instagram fa-xl"></i>
+                        <i class="fa-brands fa-facebook fa-xl"></i>
+                        <i class="fa-brands fa-linkedin fa-xl"></i>
+                        <i class="fa-brands fa-twitter fa-xl"></i>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <h2 class="text-lg">Get our services</h2>
+                    <input type="email" placeholder="Enter your Email"
+                        class="mt-2 px-4 py-2 border rounded w-full bg-transparent text-white border-white" />
+                    <div class="flex items-center mt-2">
+                        <input type="checkbox" name="checkbox" id="checkbox" class="mr-2" />
+                        <span class="text-sm">By checking the box, you agree that you are at least 16 years of
+                            age.</span>
+                    </div>
+                    <button type="submit"
+                        class="bg-transparent text-white px-4 py-2 rounded border border-white mt-4 hover:border-gray-400 hover:text-gray-400">Subscribe</button>
+                </div>
+            </div>
+            <div class="mt-4 border-t border-gray-600 pt-4 text-center text-sm">
+                <p>
+                    Website Terms | Privacy Policy | Accessibility Statement | CA
+                    Transparency in supply chains Act | Supplier Code of Conduct | Marketing
+                    to Children | | Do not Sell my Information
+                </p>
+            </div>
+        </div>
+        </footer>
+     <script src="script.js"></script>
+      </body>
+
 </html>

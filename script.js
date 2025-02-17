@@ -1,65 +1,154 @@
-// Dark mode toggle
-const darkModeBtn = document.querySelector("#darkMode");
+    // Dark mode toggle
+    const darkModeBtn = document.querySelector("#darkMode");
 
-darkModeBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  const nav = document.querySelector(".navbar");
-  const controlPanel = document.querySelector(".ControlPanel");
-  const searchBtn = document.querySelector("#S1");
-  const searchBtnI = document.querySelector("#S2");
-  const rightButtons = document.querySelectorAll(".rBtn");
-  const image = document.querySelector("#themeImage");
+    darkModeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
 
-  if (nav.style.backgroundColor !== "black") {
-    // Set src for dark mode
-    image.src = "./Images/darkLogo.jpg";
-    // Apply dark theme
-    nav.style.backgroundColor = "black";
-    nav.style.color = "white";
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "white";
-    searchBtn.style.backgroundColor = "black";
-    searchBtnI.style.backgroundColor = "black";
-    searchBtn.style.color = "white";
-    searchBtnI.style.color = "white";
-    controlPanel.style.backgroundColor = "black";
-    controlPanel.style.color = "white";
+        const toggleElements = [
+            document.querySelector("nav"),
+            document.body,
+            document.querySelector("#S1"),
+            document.querySelector("#S2"),
+            document.querySelector(".ControlPanel"),
+            ...document.querySelectorAll(".rBtn")
+        ];
 
+        // Toggle classes for dark/light mode
+        toggleElements.forEach(el => {
+            el.classList.toggle("bg-black");
+            el.classList.toggle("text-white");
+            el.classList.toggle("bg-ghostwhite");
+            el.classList.toggle("text-black");
+        });
 
-    // Style all right side buttons in dark mode
-    rightButtons.forEach((button) => {
-      button.style.backgroundColor = "black";
-      button.style.color = "white";
+        // Toggle logo image
+        const image = document.querySelector("#themeImage");
+        const isDarkMode = document.body.classList.contains("bg-black");
+        image.src = isDarkMode ? "./Images/darkLogo.jpg" : "./Images/logo.png";
     });
-  } else {
-    // Set src for light mode
-    image.src = "./Images/logo.png";
-    // Revert to light theme
-    nav.style.backgroundColor = "mintcream";
-    nav.style.color = "black";
-    document.body.style.backgroundColor = "mintcream";
-    document.body.style.color = "black";
-    searchBtn.style.backgroundColor = "mintcream";
-    searchBtnI.style.backgroundColor = "mintcream";
-    searchBtn.style.color = "black";
-    searchBtnI.style.color = "black";
-    controlPanel.style.backgroundColor = "white";
-    controlPanel.style.color = "black";
 
-    // Revert buttons to light theme
-    rightButtons.forEach((button) => {
-      button.style.backgroundColor = "mintcream";
-      button.style.color = "black";
+
+
+    // Go to top button
+    const topBtn = document.querySelector("#goto");
+    topBtn.addEventListener("click", () => {
+        window.scrollTo(0, 0);
     });
-  }
-});
 
-//  Shortcut to go to the top of page.
+    // Page navigation
+    document.querySelector("#inbox").addEventListener("click", () => {
+        window.location.href = "./msg/msg.html";
+    });
+    document.querySelector("#blogs").addEventListener("click", () => {
+        window.location.href = "./blogs/blogs.html";
+    });
+    document.querySelector("#blogsTask").addEventListener("click", () => {
+        window.location.href = "./blogs/blogs.html";
+    });
+    document.querySelector("#blogsSec").addEventListener("click", () => {
+        window.location.href = "./blogs/blogs.html";
+    });
+    document.querySelector("#login").addEventListener("click", () => {
+        window.location.href = "./login/login.html";
+    });
+    document.getElementById("add").addEventListener("click", () => {
+        window.location.href = "./Add/add.html";
+    });
+    document.getElementById("addTask").addEventListener("click", () => {
+        window.location.href = "./Add/add.html";
+    });
 
-const topBtn = document.querySelector("#goto");
-topBtn.addEventListener("click", () => {
-  window.scrollTo(0, 0);
-});
+    // Control Panel toggle
+    function openControlPanel() {
+        const controlPanel = document.getElementById("controlPanel");
+        controlPanel.classList.add("active");
+    }
+
+    function closeControlPanel() {
+        const controlPanel = document.getElementById("controlPanel");
+        controlPanel.classList.remove("active");
+    }
+
+    // Typing effect
+    document.addEventListener("DOMContentLoaded", function (e) {
+        const headingText = "A beautiful website starts here";
+        const typingHeading = document.getElementById("typing-heading");
+
+        let index = 0;
+
+        function type() {
+            if (index < headingText.length) {
+                typingHeading.textContent += headingText.charAt(index);
+                index++;
+                setTimeout(type, 100); // Adjust speed here (100ms per character)
+            }
+        }
+
+        typingHeading.textContent = ""; // Clear the h1 content initially
+        type(); // Start typing
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+        loadBlogs();
+    });
+
+    function addBlog() {
+        const title = document.getElementById("title").value;
+        const content = document.getElementById("content").value;
+        const imageInput = document.getElementById("image");
+
+        if (!title || !content) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        const blogPost = {
+            title,
+            content,
+            date: new Date().toLocaleDateString(),
+            image: imageInput.files[0] ? URL.createObjectURL(imageInput.files[0]) : null
+        };
+
+        let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+        blogs.push(blogPost);
+        localStorage.setItem("blogs", JSON.stringify(blogs));
+
+        // Clear input fields
+        document.getElementById("title").value = "";
+        document.getElementById("content").value = "";
+        imageInput.value = "";
+
+        loadBlogs();
+    }
+
+    function loadBlogs() {
+        const blogList = document.getElementById("blogList");
+        blogList.innerHTML = "";
+        let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+
+        blogs.forEach((blog, index) => {
+            const blogElement = document.createElement("div");
+            blogElement.className = "p-6 border rounded-lg bg-gray-50 shadow-md transition hover:shadow-lg";
+
+            blogElement.innerHTML = `
+${blog.image ? `<img src="${blog.image}" class="w-full h-48 object-cover rounded-md mb-4" alt="Blog Image">` : ""}
+<h3 class="text-2xl font-bold text-gray-800">${blog.title}</h3>
+<p class="text-gray-600 mt-2">${blog.content}</p>
+<span class="text-sm text-gray-500">${blog.date}</span>
+<button onclick="deleteBlog(${index})" 
+class="text-red-500 float-right mt-2 hover:underline">🗑 Delete</button>
+`;
+            blogList.appendChild(blogElement);
+        });
+    }
+
+    function deleteBlog(index) {
+        let blogs = JSON.parse(localStorage.getItem("blogs")) || [];
+        blogs.splice(index, 1);
+        localStorage.setItem("blogs", JSON.stringify(blogs));
+        loadBlogs();
+    }
+
 
 //  open inbox page of the website.
 document.querySelector("#inbox").addEventListener("click", () => {
@@ -106,35 +195,25 @@ closeBtn.addEventListener("click", function () {
   notificationContainer.style.display = "none";
 });
 
-// toggle the side bar
 
-function openControlPanel() {
-  const controlPanel = document.getElementById("controlPanel");
-  controlPanel.classList.add("active");
-}
 
-function closeControlPanel() {
-  const controlPanel = document.getElementById("controlPanel");
-  controlPanel.classList.remove("active");
-}
+// // typing effect in the second section of the website
 
-// typing effect in the second section of the website
+// document.addEventListener("DOMContentLoaded", function (e) {
+//   e.preventDefault();
+//   const headingText = "A beautiful website starts here";
+//   const typingHeading = document.getElementById("typing-heading");
 
-document.addEventListener("DOMContentLoaded", function (e) {
-  e.preventDefault();
-  const headingText = "A beautiful website starts here";
-  const typingHeading = document.getElementById("typing-heading");
+//   let index = 0;
 
-  let index = 0;
+//   function type() {
+//     if (index < headingText.length) {
+//       typingHeading.textContent += headingText.charAt(index);
+//       index++;
+//       setTimeout(type, 100); // Adjust speed here (100ms per character)
+//     }
+//   }
 
-  function type() {
-    if (index < headingText.length) {
-      typingHeading.textContent += headingText.charAt(index);
-      index++;
-      setTimeout(type, 100); // Adjust speed here (100ms per character)
-    }
-  }
-
-  typingHeading.textContent = ""; // Clear the h1 content initially
-  type(); // Start typing
-});
+//   typingHeading.textContent = ""; // Clear the h1 content initially
+//   type(); // Start typing
+// });
